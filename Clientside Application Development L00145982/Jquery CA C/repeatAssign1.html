@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Leaders</title>
+    <style>
+        h1 { width: 400px; } 
+
+        #msg { color: red; font-size: larger;}
+        
+        .Images{
+          display: inline;
+          margin: 0px;
+          padding: 0px;
+        }
+        .imgInline{display: inline;}
+        
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+    <h1>World Leaders</h1>
+    <button type="button" id="btnAdd" > Add</button> 
+    <button type="button" id="btnSwap" >Swap</button> 
+    <button type="button" id="btnRemove">Remove</button> 
+    <button type="button" id="reset">Reset</button>
+    <br>
+    <br>
+     <!--The List containing the images of the Leaders-->
+    <ul id="LeaderImages">
+        <li class="imgInline" ><img src="./Leaders/trump.jpg" id="aImage" class ="Images" height="200" ></li>
+        <li class="imgInline"><img src="./Leaders/putin.jpg" id="bImage" class ="Images" height="200"> </li>
+        <li class="imgInline"><img src="./Leaders/merkel.jpg" id="cImage" class ="Images" height="200"> </li>
+        <li class="imgInline"> <img src="./Leaders/varadkar.jpg" id="dImage" class ="Images" height="200">  </li>
+    </ul>
+    
+    <ol id="itemList">
+        <li>USA Trump</li>
+        <li>Russia Putin</li>
+        <li>Germany Merkel</li>
+        <li>Ireland Leo Varadkar</li>  
+    </ol>
+    <br><br>
+    
+</body>
+</html>

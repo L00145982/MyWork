@@ -1,0 +1,185 @@
+{
+    "name": "Premier League 2016",
+    "teams":[
+        {
+            "team": "Leicester City FC",
+            "place": 1,
+            "MP": 38,
+            "W": 23,
+            "D": 12,
+            "L": 3,
+            "Pts": 81
+        },
+        {
+            "team":"Arsenal FC",
+            "place": 2,
+            "MP": 38,
+            "W": 20,
+            "D": 11,
+            "L": 7,
+            "Pts": 71
+        },
+        {
+            "team": "Tottenham Hotspurs FC",
+            "place": 3,
+            "MP": 38,
+            "W": 19,
+            "D": 13,
+            "L": 6,
+            "Pts": 70
+        },
+        {
+            "team":"Manchester City FC",
+            "place": 4,
+            "MP": 38,
+            "W": 19,
+            "D": 9,
+            "L": 10,
+            "Pts": 66
+        },
+        {
+            "team": "Manchester United FC",
+            "place": 5,
+            "MP": 38,
+            "W": 19,
+            "D": 9,
+            "L": 10,
+            "Pts": 66
+        },
+        {
+            "team": "Southhampoton FC",
+            "place": 6,
+            "MP": 38,
+            "W": 18,
+            "D": 9,
+            "L": 11,
+            "Pts": 63
+        },
+        {
+            "team": "West Ham United FC",
+            "place": 7,
+            "MP": 38,
+            "W": 16,
+            "D": 14,
+            "L": 8,
+            "Pts": 62
+        },
+        {
+            "team": "Liverpool FC",
+            "place": 8,
+            "MP": 38,
+            "W": 16,
+            "D": 12,
+            "L": 10,
+            "Pts": 60
+        },
+        {
+            "team": "Stoke City FC",
+            "place": 9,
+            "MP": 38,
+            "W": 14,
+            "D": 9,
+            "L": 15,
+            "Pts": 51
+        },
+        {
+            "team": "Chelsea FC",
+            "place": 10,
+            "MP": 38,
+            "W": 12,
+            "D": 14,
+            "L": 12,
+            "Pts": 50
+        },
+        {
+            "team":"Everton FC",
+            "place": 11,
+            "MP": 38,
+            "W": 11,
+            "D": 14,
+            "L": 13,
+            "Pts": 47
+        },
+        {
+            "team": "Swansea City FC",
+            "place": 12,
+            "MP": 38,
+            "W": 12,
+            "D": 11,
+            "L": 15,
+            "Pts": 47
+        },
+        {
+            "team": "Watford FC",
+            "place": 13,
+            "MP": 38,
+            "W": 12,
+            "D": 9,
+            "L": 17,
+            "Pts": 45
+        },
+        {
+            "team": "West Bromwich Albion FC",
+            "place": 14,
+            "MP": 38,
+            "W": 10,
+            "D": 13,
+            "L": 15,
+            "Pts": 43
+        },
+        {
+            "team": "Crystal Palace FC",
+            "place": 15,
+            "MP": 38,
+            "W": 11,
+            "D": 9,
+            "L": 18,
+            "Pts": 42
+        },
+        {
+            "team": "AFC Borunemouth",
+            "place": 16,
+            "MP": 38,
+            "W": 11,
+            "D": 9,
+            "L": 18,
+            "Pts": 42
+        },
+        {
+            "team": "Sunderland AFC",
+            "place": 17,
+            "MP": 38,
+            "W": 9,
+            "D": 12,
+            "L": 17,
+            "Pts": 39
+        },
+        {
+            "team": "Newcastle United FC",
+            "place": 18,
+            "MP": 38,
+            "W": 9,
+            "D": 10,
+            "L": 19,
+            "Pts": 37
+        },
+        {
+            "team": "Norwich City FC",
+            "place": 19,
+            "MP": 38,
+            "W": 9,
+            "D": 7,
+            "L": 22,
+            "Pts": 34
+        },
+        {
+            "team": "Aston Villa FC",
+            "place": 20,
+            "MP": 38,
+            "W": 3,
+            "D": 8,
+            "L": 27,
+            "Pts": 17
+        }
+    ]
+}

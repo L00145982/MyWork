@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <center>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Premier League 2016 </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            #pLlogo {
+                width: 250px;
+                height: 200px;
+                float: right;
+            }
+
+            table td,
+            table th {
+                color: white;
+                border: 1px solid #ddd;
+                background-color: purple;
+                width: 150px;
+                padding: 8px;
+                text-align: center;
+
+            }
+
+            table tr:nth-child(even) {
+                background-color: #000000;
+            }
+
+            table tr:hover {
+                background-color: #ddd;
+            }
+
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+
+                background-color: rgb(206, 214, 207);
+                color: royalblue;
+            }
+        </style>
+
+</head>
+
+<body>
+    <div id="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <img id="pLlogo" src="TeamImages/PL.png">
+            <h1 class="display-4">Premier League 2015/16</h1>
+
+            <p class="lead">Showing you the fixtures and results for the Premier League 2016.</p>
+
+        </div>
+    </div>
+
+    <div id="Nav">
+        <ul>
+            <li><button onclick="month()">Month</li>
+            <li><button onclick="gameWeek()">Game Week</li>
+            <li><button onclick="selectTeam()">Teams</li>
+            <li><button onclick="table()">League Table</li>
+        </ul>
+    </div>
+
+    <div id="optionBar">
+        <label id="optionLabel">Select Month:</label>
+        <select name="month" id="selectMenu">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+
+        <label id="optionLabel">Select Game Week:</label>
+        <select name="matchDay">Game Week
+            <option value="matchDay1">Game Week 1</option>
+            <option value="matchDay2">Game Week 2</option>
+            <option value="matchDay3">Game Week 3</option>
+            <option value="matchDay4">Game Week 4</option>
+            <option value="matchDay5">Game Week 5</option>
+            <option value="matchDay6">Game Week 6</option>
+            <option value="matchDay7">Game Week 7</option>
+            <option value="matchDay8">Game Week 8</option>
+            <option value="matchDay9">Game Week 9</option>
+            <option value="matchDay10">Game Week 10</option>
+            <option value="matchDay11">Game Week 11</option>
+            <option value="matchDay12">Game Week 12</option>
+            <option value="matchDay13">Game Week 13</option>
+            <option value="matchDay14">Game Week 14</option>
+            <option value="matchDay15">Game Week 15</option>
+            <option value="matchDay16">Game Week 16</option>
+            <option value="matchDay17">Game Week 17</option>
+            <option value="matchDay18">Game Week 18</option>
+            <option value="matchDay19">Game Week 19</option>
+            <option value="matchDay20">Game Week 20</option>
+            <option value="matchDay21">Game Week 21</option>
+            <option value="matchDay22">Game Week 22</option>
+            <option value="matchDay23">Game Week 23</option>
+            <option value="matchDay24">Game Week 24</option>
+            <option value="matchDay25">Game Week 25</option>
+            <option value="matchDay26">Game Week 26</option>
+            <option value="matchDay27">Game Week 27</option>
+            <option value="matchDay28">Game Week 28</option>
+            <option value="matchDay29">Game Week 29</option>
+            <option value="matchDay30">Game Week 30</option>
+            <option value="matchDay31">Game Week 31</option>
+            <option value="matchDay32">Game Week 32</option>
+            <option value="matchDay33">Game Week 33</option>
+            <option value="matchDay34">Game Week 34</option>
+            <option value="matchDay35">Game Week 35</option>
+            <option value="matchDay36">Game Week 36</option>
+            <option value="matchDay37">Game Week 37</option>
+            <option value="matchDay38">Game Week 38</option>
+
+        </select>
+
+        <label id="optionLabel">Select Team:</label>
+        <select name="team" id="selectMenu">
+            <option value="ars">Arsenal</option>
+            <option value="ast">Aston Villa</option>
+            <option value="bour">Bournemouth</option>
+            <option value="chelsea">Chelsea</option>
+            <option value="crystal">Crystal Palace</option>
+            <option value="Everton">Everton</option>
+            <option value="leic">Leicester City</option>
+            <option value="liverpool">Liverpool</option>
+            <option value="manc">Man-City</option>
+            <option value="manu">Man-United</option>
+            <option value="new">Newcastle</option>
+            <option value="norwich">Norwich City</option>
+            <option value="south">Southhampton</option>
+            <option value="spurs">Tottenham Hotspur (Spurs)</option>
+            <option value="stoke">Stoke City</option>
+            <option value="sunderland">Sunderland</option>
+            <option value="swansea">Swansea</option>
+            <option value="watford">Watford</option>
+            <option value="WestBrom">West Brom</option>
+            <option value="westHam">West Ham</option>
+
+        </select>
+
+    </div>
+    <p>Use the Option menu's for your Choice of fixture and click the buttons that co-respond with the option. Click on league table to view the Table</p>
+    <p id="demo">PREMIER LEAGUE</p>
+    <script>
+        function month() {  //filters the fixtures by month
+            var plObj;
+            var xhttp = new XMLHttpRequest();
+            var result = "";
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var plTxt = this.responseText;
+                    plObj = JSON.parse(plTxt);
+
+                    var names = "";
+
+                    for (let i = 0; i < 37; i++) {
+
+                        for (let j = 0; j < plObj.rounds[i].matches.length; j++) {
+                            var d = plObj.rounds[i].matches[j].date;
+                            if (document.querySelector('select[name=month').value == "August" && d.includes("2015-08")) {  //if the month of August is selected the games in august will appear vice versa for the other months
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            if (document.querySelector('select[name=month').value == "September" && d.includes("2015-09")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "October" && d.includes("2015-10")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "November" && d.includes("2015-11")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "December" && d.includes("2015-12")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "January" && d.includes("2016-01")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "February" && d.includes("2016-02")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "March" && d.includes("2016-03")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "April" && d.includes("2016-04")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                            else if (document.querySelector('select[name=month').value == "May" && d.includes("2016-05")) {
+
+                                names += "<table><tr><td>" +
+                                    plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                    plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                    plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                    plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                            }
+
+                         
+
+
+                        }
+                    }
+                    document.getElementById("demo").innerHTML = names;
+                }
+
+            };
+            xhttp.open("GET", "football2016.json", true); // used generator here
+            xhttp.send();
+
+        }
+
+        function selectTeam() { // The Functionality for Select Teams
+            var plObj;
+            var xhttp = new XMLHttpRequest();
+            var result = "";
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var plTxt = this.responseText;
+                    plObj = JSON.parse(plTxt);
+                    var names = "";
+                    function teams(param, img) {
+                        names += "<table><tr><th><img src=teamImages/" + img + ".png width='150' height='150'></th></tr></table>"
+                        for (let i = 0; i < 38; i++) {
+                            for (let j = 0; j < plObj.rounds[i].matches.length; j++) {
+                                if (plObj.rounds[i].matches[j].team1 == param || plObj.rounds[i].matches[j].team2 == param) {
+                                    names += "<table><tr><td>" +
+                                        plObj.rounds[i].matches[j].team1 + "</td><td>" +
+                                        plObj.rounds[i].matches[j].score.ft[0] + ":" +
+                                        plObj.rounds[i].matches[j].score.ft[1] + "</td><td>" +
+                                        plObj.rounds[i].matches[j].team2 + "</td></tr></table>";
+                                }
+                            }
+                        }
+                        document.getElementById("demo").innerHTML = names;
+                    }
+                    if (document.querySelector('select[name=team').value == "ars") {
+                        teams("Arsenal FC", "Arsenal");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "ast") {
+                        teams("Aston Villa FC", "Villa");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "bour") {
+                        teams("AFC Bournemouth", "Bournemouth");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "chelsea") {
+                        teams("Chelsea FC", "Chelsea");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "crystal") {
+                        teams("Crystal Palace FC", "Palace");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "Everton") {
+                        teams("Everton FC", "Everton");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "leic") {
+                        teams("Leicester City FC", "Leicester");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "liverpool") {
+                        teams("Liverpool FC", "Liverpool")
+                    }
+
+                    if (document.querySelector('select[name=team').value == "manc") {
+                        teams("Manchester City FC", "City");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "manu") {
+                        teams("Manchester United FC", "United");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "new") {
+                        teams("Newcastle United FC", "Newcastle");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "norwich") {
+                        teams("Norwich City FC", "Norwich");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "south") {
+                        teams("Southampton FC", "Southhampton")
+                    }
+
+                    if (document.querySelector('select[name=team').value == "spurs") {
+                        teams("Tottenham Hotspur FC", "Spurs");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "stoke") {
+                        teams("Stoke City FC", "Stoke");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "sunderland") {
+                        teams("Sunderland AFC", "Sunderland");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "swansea") {
+                        teams("Swansea City FC", "Swansea");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "watford") {
+                        teams("Watford FC", "Watford");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "WestBrom ") {
+                        teams("West Bromwich Albion FC", "WestBrom");
+                    }
+
+                    if (document.querySelector('select[name=team').value == "westHam") {
+                        teams("West Ham United FC", "WestHam");
+                    }
+
+
+                }
+            };
+            xhttp.open("GET", "football2016.json", true);
+            xhttp.send();
+        }
+
+        function gameWeek() {
+            var plObj;
+            var xhttp = new XMLHttpRequest();
+            var result = "";
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var plTxt = this.responseText;
+                    plObj = JSON.parse(plTxt);
+
+                    var names = "";
+                    function match(y) {
+                        names += "<table><tr><th>GAMEWEEK</th></tr></table>"
+                        names += "<table><tr><th>team 1</th><th>score</th> <th>score</th><th>team 2</th></tr></table>"
+
+                        for (var j = 0; j < plObj.rounds[y].matches.length; j++) {
+                            names += "<table><tr><td>" +
+                                plObj.rounds[y].matches[j].team1 + "</td><td> " +
+                                plObj.rounds[y].matches[j].score.ft[0] + "</td><td> " +
+                                plObj.rounds[y].matches[j].score.ft[1] + "</td><td> " +
+                                plObj.rounds[y].matches[j].team2 + "</td> " +
+                                " </tr></table>";
+                            console.log(plObj.rounds[y].matches[j].team1);
+                        }
+
+                        document.getElementById("demo").innerHTML = names;
+                    }
+                    //matchday 1-6
+                    if (document.querySelector('select[name=matchDay').value == "matchDay1") {
+                        match(0);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay2") {
+                        match(1);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay3") {
+                        match(2);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay4") {
+                        match(3);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay5") {
+                        match(4);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay6") {
+                        match(5);
+                    }
+                    //match 7-12
+                    if (document.querySelector('select[name=matchDay').value == "matchDay7") {
+                        match(6);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay8") {
+                        match(7);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay9") {
+                        match(8);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay10") {
+                        match(9);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay11") {
+                        match(10);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay12") {
+                        match(11);
+                    }
+                    //matchday 13-18
+                    if (document.querySelector('select[name=matchDay').value == "matchDay13") {
+                        match(12);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay14") {
+                        match(13);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay15") {
+                        match(14);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay16") {
+                        match(15);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay17") {
+                        match(16);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay18") {
+                        match(17);
+                    }
+
+                    //matchday 19-24
+                    if (document.querySelector('select[name=matchDay').value == "matchDay19") {
+                        match(18);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay20") {
+                        match(19);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay21") {
+                        match(20); 2
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay22") {
+                        match(21);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay23") {
+                        match(22);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay24") {
+                        match(23);
+                    }
+
+
+                    //matchday 25-30
+                    if (document.querySelector('select[name=matchDay').value == "matchDay25") {
+                        match(24);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay26") {
+                        match(25);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay27") {
+                        match(26);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay28") {
+                        match(27);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay29") {
+                        match(28);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay30") {
+                        match(29);
+                    }
+
+
+                    //matchday 31-37
+                    if (document.querySelector('select[name=matchDay').value == "matchDay31") {
+                        match(30);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay32") {
+                        match(31);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay33") {
+                        match(32);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay34") {
+                        match(33);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay35") {
+                        match(34);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay37") {
+                        match(35);
+                    }
+                    if (document.querySelector('select[name=matchDay').value == "matchDay38") {
+                        match(36);
+                    }
+
+
+                }
+            };
+            xhttp.open("GET", "football2016.json", true); // used generator here
+            xhttp.send();
+
+        }
+
+        function table(){
+            var plObj;
+            var xhttp = new XMLHttpRequest();
+            var result = "";
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var plTxt2 = this.responseText;
+                    plObj = JSON.parse(plTxt2);
+
+                    var names = "";
+                    names += "<h3> League Result </h3>"
+                    names += "<table><tr><th>Team</th><th>Place</th><th>Games Played</th><th>Games Won</th><th>Games Drew</th><th>Games Lost</th><th>Points</th></tr></table>"
+
+                    for(var i = 0; i < plObj.teams.length ; i++){
+                        names += "<table><tr><td>" +
+                            plObj.teams[i].team + "</td><td>" +
+                            plObj.teams[i].place + "</td><td>" +
+                            plObj.teams[i].MP + "</td><td>" +
+                            plObj.teams[i].W + "</td><td>" +
+                            plObj.teams[i].D + "</td><td>" +
+                            plObj.teams[i].L + "</td><td>" +
+                            plObj.teams[i].Pts + "</td>" +
+                            "</tr></table>" 
+                            console.log(plObj.teams[i].team);
+                    }
+                    document.getElementById("demo").innerHTML = names;
+                    
+                }
+            };
+            xhttp.open("GET", "leagueTable.json", true); 
+            xhttp.send();
+        }
+    </script>
+</div>
+</body>
+
+</html>
